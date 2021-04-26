@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css"/>
+        <title>Roy Galaxy</title>
+    </head>
+    <body>
+        <section class="container">
+            <header>
+                <h2 class="logo">Roy Galaxy</h2>
+                <nav>
+                    <span class="active"><a href="#"><i class="fas fa-home"></i></a></span>
+                    <span><a href="#"><i class="fas fa-gamepad"></i></a></span>
+                    <span><a href="#"><i class="fas fa-tools"></i></a></span>
+                    <span><a href="#"><i class="fas fa-info-circle"></i></a></span>
+                </nav>
+            </header>
+            <section class="body">
+                <h1>Unleash Your Creativity</h1>
+                <p>Start doing whatever you are good at.</p>
+                <div class="box">
+                    <h2 class="head">Sign In to Continue</h2>
+                    <p>In order to use our products you need to <b>Sign In</b>.<br>
+                    For registration contact me on following Links.<br>
+                    
+                    <span class="whatsapp" onclick="openApp('whatsapp')"><i class="fab fa-whatsapp"></i></span>
+                    <span class="email" onclick="openApp('email')"><i class="fas fa-envelope"></i></span>
+                    <span class="instagram" onclick="openApp('instagram')"><i class="fab fa-instagram"></i></span>
+                    </p>
+                    <button class="start" onclick="openForm()">Get Started</button>
+                </div>
+                
+            </section>
+        </section>
+        <script src="js/tasker.js" type="text/javascript"></script>
+        <script type="text/javascript" charset="utf-8">
+            function openForm(){
+                window.open('login/login.html','_self')
+            }
+        </script>
+    </body>
+</html>

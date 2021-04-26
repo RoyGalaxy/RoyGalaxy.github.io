@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Brick Breaker</title>
+  </head>
+  <body>
+    <canvas id="game">
+      
+    </canvas>
+    <div class="buttons">
+      <button ontouchstart="left=true" ontouchend="left=false" id="left"></button>
+      <button ontouchstart="right=true" ontouchend="right=false" id="right"></button>
+    </div>
+    <div id="game_screen">
+      <button id="play">Play</button>
+      <button id="instructions">How to play</button>
+      <button id="contact">Contact Us</button>
+    </div>
+    <div id="instruction_screen">
+      <span id="menu_btn">Go back</span>
+      <div class="controls">
+        <h2>Controls</h2><br>
+        <p>30% of the screen size
+           from the bottom side is reserved
+           for controls.<br>
+           The left side will move the paddle to the left side.
+           Similarly the right side will move the paddle to right side.
+           Tap the controll buttons to move the paddle
+           only in a small amount, press and hold to keep moving.
+        </p>
+      </div>
+      <div class="rules">
+        <h2>Rules</h2><br>
+          <ul>
+            <li>Every User gets 3 lives.</li>
+            <li>Whenever the ball touches bottom of the screen one life is lost</li>
+            <li>Breaking each brick will give you 10 points</li>
+            <li>There are a total of 3 levels in the game</li>
+            <li>Every level has one extra row and the speed of ball is increased</li>
+            <li>Try hitting two bricks at once. This will prevent the ball from going back down</li>
+          </ul>
+      </div>
+    </div>
+    
+    <script src="game.js"></script>
+  </body>
+</html>
