@@ -12,6 +12,9 @@
 }
 /* Parent Elements */
 body{
+    position: sticky;
+    top: 0;
+    left: 0;
     max-height: 100vh;
     overflow: hidden;
     background: url('../images/Hacker Room.jpg');
@@ -24,6 +27,7 @@ body,.container{
     padding: 0;
 }
 .container{
+    height: auto;
     background: transparent;
     position: relative;
     overflow:auto;    
