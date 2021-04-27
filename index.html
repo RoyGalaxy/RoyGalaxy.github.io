@@ -14,7 +14,7 @@
                 <nav>
                     <span class="active"><a href="#"><i class="fas fa-home"></i></a></span>
                     <span><a href="#"><i class="fas fa-gamepad"></i></a></span>
-                    <span><a href="unsaved-whatsapp-number/index.html"><i class="fas fa-tools"></i></a></span>
+                    <span onclick="view('unsaved-whatsapp-number')"><i class="fas fa-tools"></i></span>
                     <span><a href="#"><i class="fas fa-info-circle"></i></a></span>
                 </nav>
             </header>
@@ -32,17 +32,17 @@
                     <span class="email" onclick="openApp('email')"><i class="fas fa-envelope"></i></span>
                     <span class="instagram" onclick="openApp('instagram')"><i class="fab fa-instagram"></i></span>
                     </p>
-                    <button class="start">Explore</button>
+                    <button class="start" onclick="view('canvas')">Explore</button>
                 </div>
                 
             <!-- Notice Section -->    
                 <div class="box">
                     <h2 class="head">Infromation</h2>
-                    <p contenteditable="">We recently launched a glassmorphism UI for our website. And I hope it looks cool.</p>
+                    <p>We recently launched a glassmorphism UI for our website. And I hope it looks cool.</p>
                 </div>
             
             <!-- Canvas Works -->    
-                <div class="box">
+                <div class="box" id="canvas">
                     <h2 class="head">Canvas Works</h2>
                     <p>
                         We are constantly working on delivering best content to you.<br>
@@ -58,14 +58,14 @@
                 </div>
                 
             <!-- unsaved-whatsapp-number -->
-            <div class="box">
+            <div class="box" id="unsaved-whatsapp-number">
                 <h2 class="head">Whatsapp Trick</h2>
                 <p>
                     Ever wanted to message a whatsapp without saving it in your phone.<br>
                     Nowadays we have to make groups on whatsapp and for that we have to save every contact in our device/phone<br>
                     But from now onwards you can text any no. without even saving that first.<br><br>
                     
-                    <button class="start">Launch</button>
+                    <button class="start" onclick="launch('unsaved-whatsapp-number')">Launch</button>
                     
                     <b>Bonus tip:-</b> You can also text your own no.<br><br>
                     <b>Note:- </b><i>only indian no's are supported.</i>
