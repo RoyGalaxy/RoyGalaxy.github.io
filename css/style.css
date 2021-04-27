@@ -8,18 +8,29 @@
     padding: 0px;
     box-sizing: border-box;
     user-select: none;
+    font-family: 'Poppins';
 }
 /* Parent Elements */
+body{
+    max-height: 100vh;
+    overflow: hidden;
+    background: url('../images/Hacker Room.jpg');
+    background-size:cover;
+}
 body,.container{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
     margin: 0;
     padding: 0;
-    /*background-size:cover;*/
+}
+.container{
+    background: transparent;
+    position: relative;
+    overflow:auto;    
 }
 /* header */
 .container header{
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,17 +83,13 @@ nav span.active i,nav span:hover i{
 .body{
     height: calc(100vh - 60px);
     width:100%;
-    padding: 20px;
-    padding-bottom: 0;
-    background: url('../images/Hacker Room.jpg');
-    background-size:150%;
-    background-position:center;
+    padding:20px;
+    padding-bottom: 60px;
 }
 .body h1{
     position: relative;
     color: #fff;
     font-size: 28px;
-    font-family: 'Poppins';
 }
 .body > p{
     color: #fff;
@@ -91,11 +98,13 @@ nav span.active i,nav span:hover i{
 }
 
 .box{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
+    width: 95%;
     margin: 25px auto;
+    margin-bottom: 80px;
     padding: 20px 10px;
     background: rgba(255,255,255,0.2);
     backdrop-filter: blur(6px);
@@ -108,14 +117,21 @@ nav span.active i,nav span:hover i{
 
 .box .head{
     color: #fff;
-    font-family: 'Poppins';
     
 }
 .box p{
     color: #fff;
-    margin: 3px 16%;
-    font-family: 'Poppins';
-    font-size: 15px;
+    margin: 15px 10%;
+    font-size: 18px;
+}
+.box ul{
+    margin: 30px auto;
+    width: 70%;
+}
+.box ul li{
+    color: #fff;
+    font-size: 20px;
+    list-style: circle;
 }
 .box .start{
     display: block;
@@ -125,7 +141,6 @@ nav span.active i,nav span:hover i{
     background: #fff;
     color: #111;
     font-size: 24px;
-    font-family: 'Poppins';
     border: none;
     outline: none;
     border-radius: 30px;
