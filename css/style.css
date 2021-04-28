@@ -90,8 +90,10 @@ nav span.active i,nav span:hover i{
 
 /* the main content Body */
 .body{
+    position: relative;
     height: calc(100vh - 60px);
     width:100%;
+    padding: 20px auto;
     padding-bottom: 60px;
 }
 .body h1{
@@ -169,6 +171,10 @@ nav span.active i,nav span:hover i{
 }
 .box .email{
     background: #ff3435;
+}
+.box .sms{
+    background: #f3586a;
+    font-size: 28px;
 }
 
 /* Designing footer */

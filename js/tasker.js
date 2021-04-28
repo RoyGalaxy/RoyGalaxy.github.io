@@ -7,8 +7,9 @@ function openApp(name){
             window.open('instagram://user?username=roy__galaxy',target='_self');
             break;
         case 'email':
-            window.open('mailto:ajroyssttle@gmail.com?Subject=Registration&body=Your text here...',target='_self')
-        default:
+            window.open('mailto:ajroyssttle@gmail.com?Subject=Contact&body=Your text here...',target='_self')
+        case 'sms':
+            window.open('sms:+918824707969?body=Your text here...',target='_self')
             // code
     }
 }
