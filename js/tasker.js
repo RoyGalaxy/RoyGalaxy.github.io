@@ -8,8 +8,10 @@ function openApp(name){
             break;
         case 'email':
             window.open('mailto:ajroyssttle@gmail.com?Subject=Contact&body=Your text here...',target='_self')
+            break;
         case 'sms':
             window.open('sms:+918824707969?body=Your text here...',target='_self')
+            break;
             // code
     }
 }
