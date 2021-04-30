@@ -8,16 +8,15 @@
         <title>Send whatsapp message</title>
     </head>
     <body>
-        <section class="container">
-            <form action="#" accept-charset="utf-8" autocomplete="off">
+        <section class="container" >
+            <form accept-charset="utf-8" autocomplete="off" netlify onsubmit="sendMessage()">
                 <h2>Send A WhatsApp message</h2>
-                <input type="tel" id="tel"   placeholder="Enter the number" required=""/>
+                <input type="tel" id="tel"   placeholder="Enter the number" required pattern="[6-9]{1}[0-9]{9}"/>
                 <input type="text" id="text" placeholder="Enter the text..."/>
-                <button type="submit" onclick="sendMessage()">Open Whatsapp</button>
+                <button type="submit">Open Whatsapp</button>
             </form>
         </section>
 
-        <!--<a href="whatsapp://send?phone=+916367027762&text=Hello world I am Roy Galaxy" data-action="share/whatsapp/share" target="_blank">whatsapp</a>-->
         <script src="tasker.js" type="text/javascript"></script>
     </body>
 </html>
