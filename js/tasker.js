@@ -23,3 +23,14 @@ function launch(item){
 function view(id,part){
     document.getElementById(`${id}`).scrollIntoView({behavior:'smooth'},part);
 }
+ var el;
+function popup(item){
+    el = document.querySelector(`.${item}`);
+    el.classList.add('active');
+    el.addEventListener('touchstart',function(event){
+        if(event.target === el){
+            el.classList.remove('active');
+
+        }
+    });
+}
