@@ -27,10 +27,11 @@ function view(id,part){
 function popup(item){
     el = document.querySelector(`.${item}`);
     el.classList.add('active');
-    el.addEventListener('touchstart',function(event){
+    el.addEventListener('click',function(event){
         if(event.target === el){
             el.classList.remove('active');
 
         }
+        console.log(event)
     });
 }

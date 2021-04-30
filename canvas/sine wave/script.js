@@ -9,7 +9,7 @@ function Control(){
     this.gap;
     this.range = function(object,property,min,max){
         if(this.gap === undefined){
-            this.gap = (max - min) / 300;
+            this.gap = (max - min) / 500;
         }
         this.value = object[property] + this.gap;
         if(this.value >= max || this.value <= min){
@@ -66,7 +66,7 @@ function loop(){
     draw();
     
     // playing with values
-    h.range(color,'h',0,255);
+    h.range(color,'h',0,360);
     s.range(color,'s',20,70);
     amplitude.range(wave,'amplitude',-180,180);
     length.range(wave,'length',0,0.01);
