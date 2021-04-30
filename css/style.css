@@ -139,7 +139,7 @@ nav span.active i,nav span:hover i{
 }
 .box .start{
     display: block;
-    margin: 20px 0;
+    margin: 20px auto;
     height: 60px;
     width: 60%;
     background: #fff;
@@ -149,6 +149,12 @@ nav span.active i,nav span:hover i{
     outline: none;
     border-radius: 30px;
     font-weight: bold;
+}
+.box .start.small{
+    height: 40px;
+    width: 40%;
+    font-size: 20px;
+    margin: 5px 0;
 }
 
 .box span{
@@ -186,7 +192,7 @@ footer{
     padding: 30px 15px;
     background: rgba(0,0,0,0.4);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(200,200,200,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
     box-shadow: 0 0 10px rgba(255,255,255,0.01),
                 0 0 20px rgba(255,255,255,0.01),
                 0 0 40px rgba(255,255,255,0.01);
