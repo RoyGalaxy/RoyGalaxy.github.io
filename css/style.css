@@ -226,7 +226,7 @@ footer{
     box-shadow:  0 0 10px rgba(0,0,0,0.15),
                  0 0 20px rgba(0,0,0,0.15),
                  0 0 40px rgba(0,0,0,0.15);
-    transform: scale(0.3);
+    transform: scale(0.7);
     transition: transform 0.3s ease-in-out;
 }
 .popup.active .box{
