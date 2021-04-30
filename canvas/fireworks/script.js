@@ -87,7 +87,7 @@ loop();
 // Getting Touch Cordinates
 addEventListener('click',(event) => {
         explode.pause();
-        explode.seekTime = 0.00;
+        explode.currentTime = 0.00;
         explode.play();
     
     touch.x = event.clientX;
