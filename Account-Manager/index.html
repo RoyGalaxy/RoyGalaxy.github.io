@@ -14,10 +14,10 @@
                 <span class="listbtn"><i class="fas fa-clipboard-list"></i></span>
             </header>
             <div class="body">
-                <form action="#">
-                    <input type="text" id="name" placeholder="Name"/>
-                    <input type="number" id="rate" placeholder="Rate"/>
-                    <input type="number" id="quantity" placeholder="Quantity"/>
+                <form action="#" autocomplete="off" id="submit">
+                    <input type="text" id="name" placeholder="Name" required/>
+                    <input type="number" id="rate" placeholder="Rate" required/>
+                    <input type="number" id="quantity" placeholder="Quantity" required/>
                     <button type="submit" id="submit" class="start">Submit</button>
                 </form>
             </div>
@@ -25,6 +25,9 @@
                 <ul class="list">
                     
                 </ul>
+                <div class="foot">
+                    <span onclick="emptyList()">Clear All</span>
+                </div>
             </div>
         </section>
         

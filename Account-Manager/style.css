@@ -131,7 +131,7 @@ form .start{
     transition: transform 0.3s ease-in-out;
 }
 ul{
-    height: 70vh;
+    height: calc(70vh - 30px);
     width: 100%;
     list-style: none;
     padding: 10px;
@@ -155,4 +155,16 @@ ul li span{
     margin-right: 10px;
     color: #25fd16;
     font-weight: bold;
+}
+.foot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.foot span{
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
