@@ -26,7 +26,6 @@ const clear = () => {
 }
 
 listbtn.onclick = () => {
-    localStorage.clear();
     createList();
     popup.classList.toggle('active');
 }
