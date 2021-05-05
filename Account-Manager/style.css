@@ -119,7 +119,7 @@ form .start{
     height: 70vh;
     width: 100%;
     opacity: 0;
-    background: rgba(255,255,255,0.4);
+    background: rgb(113,161,242);
     backdrop-filter: blur(20px);
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     transition:transform 0.2s ease-in-out,
@@ -153,7 +153,7 @@ ul li{
 ul li span{
     display: inline-block;
     margin-right: 10px;
-    color: #25fd16;
+    color: #00cf78;
     font-weight: bold;
 }
 .foot{
@@ -162,9 +162,13 @@ ul li span{
     align-items: center;
 }
 .foot span{
-    color: #333;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
-    text-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+#danger{
+    color: #ff4758;
+}
+#total{
+    color: #55ffa8;
 }
