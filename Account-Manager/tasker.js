@@ -59,6 +59,7 @@ function createList(){
 
 // Clear Local Storage
 function emptyList(){
+    if(!confirm('Do you really want to Clear All')) return;
     localStorage.clear();
     entries = [];
     createList();
@@ -66,6 +67,7 @@ function emptyList(){
 }
 
 function del(el){
+    if(!confirm('Do you really want to Delete this')) return;
     const num = parseInt(el.className)
     
     localStorage.removeItem(`name${num}`);
@@ -74,6 +76,7 @@ function del(el){
     
     entries.splice(num,1);
     localStorage.setItem('list',JSON.stringify(entries));
+    
     createList();
     
 }
