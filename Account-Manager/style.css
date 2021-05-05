@@ -158,11 +158,11 @@ ul li span{
 }
 .foot{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 .foot span{
-    color: #fff;
+    color: #333;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
