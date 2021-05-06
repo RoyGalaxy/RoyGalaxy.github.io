@@ -11,7 +11,8 @@ const total = document.querySelector('#total');
 // On form Submit
 form.addEventListener("submit",
     () => {
-        let n = (localStorage.length - 1)/3;
+        getList();
+        let n = entries.length;
         
         localStorage[`name${n}`] = name.value;
         localStorage[`rate${n}`] = rate.value;
@@ -88,6 +89,5 @@ function getList(){
     }
     else{
         entries = JSON.parse(list);
-        console.log(list)
     }
 }
