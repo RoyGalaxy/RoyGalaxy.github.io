@@ -10,13 +10,6 @@ var game_level = 1;
 var game_ended = false;
 const max_level = 5
 
-//Game components
-const bg = new Image();
-bg.src = "images/bg.jpg";
-const hit_brick = new Audio();
-hit_brick.src = "Audio/01.mp3" ;
-const hit_wall = new Audio();
-hit_wall.src = "Audio/05.mp3";
 
 //Setting canvas height to screen height
 canvas.height = window.innerHeight;
@@ -36,8 +29,8 @@ function movePaddle(){
 
 //Game objects
 const paddle = {
-  height: 20,
-  width: window.innerWidth/5,
+  height:15,
+  width: window.innerWidth/6,
   dx: 4,
   x: window.innerWidth/2 - 50,
   y: window.innerHeight - 80,
@@ -46,7 +39,7 @@ const paddle = {
 }
 
 const ball = {
- radius: 10,
+ radius: 8,
  color: "#fff",
  x: paddle.x + paddle.width/2,
  y: paddle.y - 10,
@@ -58,12 +51,12 @@ const ball = {
 }
 
 const brick = {
-  height:18,
-  width:Math.floor(window.innerWidth - 90)/8,
-  margin:10,
+  height:15,
+  width:Math.floor(window.innerWidth - 55)/10,
+  margin:5,
   margin_top:40,
-  row:6,
-  column:8,
+  row:8,
+  column:10,
   stroke_color:"#131419",
   fill_color:"#555"
 }
@@ -111,7 +104,6 @@ function update(){
 function ball_paddle_collision(){
  if(ball.y > paddle.y - ball.radius && ball.x <= paddle.x + paddle.width && ball.x >= paddle.x && ball.y < paddle.y + paddle.height){
     ball.dy = -ball.dy;
-    hit_wall.play();
     //Get5ing the point where Ball is hit
     let hit_point = ball.x - (paddle.x+ paddle.width/2);
     
@@ -130,7 +122,8 @@ function ball_paddle_collision(){
 //The loop which makes ball move
 function loop(){
   //Clearing canvas
-  ctx.drawImage(bg,0,0,window.innerWidth,window.innerHeight);
+  ctx.fillStyle = "rgba(0,0,0,0.5)"
+  ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
 
   movePaddle();
   
@@ -225,7 +218,6 @@ function ball_brick_collision(){
       //If the brick is not broken
       if(b.status){
         if(ball.x + ball.radius > b.x && ball.x - ball.radius < b.x + brick.width && ball.y + ball.radius > b.y && ball.y - ball.radius < b.y + brick.height){
-          hit_brick.play();
           ball.dy = -ball.dy;
           score += score_unit;
           b.status = false;
@@ -241,11 +233,9 @@ function ball_brick_collision(){
 function ball_wall_collision(){
   if(ball.x < 0+ball.radius || ball.x > window.innerWidth - ball.radius){
     ball.dx = -ball.dx;
-    hit_wall.play();
   }
   if(ball.y < 0 + ball.radius){
     ball.dy = -ball.dy;
-    hit_wall.play();
   }
   else if(ball.y > window.innerHeight - ball.radius){
     //Removing one life
@@ -274,9 +264,6 @@ function game_stats(text,text_x,text_y){
   ctx.fillStyle = "#fff"
   ctx.font = "25px Yusei Magic"
   ctx.fillText(text,text_x,text_y);
-}
-function game_images(img,img_x,img_y){
-  ctx.drawImage(img,img_x,img_y,30,30);
 }
 
 function next_level(){

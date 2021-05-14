@@ -83,7 +83,7 @@ form{
     justify-content: center;
 }
 form input{
-    width: 80%;
+    width: 90%;
     height: 50px;
     border-radius: 25px;
     background: #fff;
@@ -95,6 +95,8 @@ form input{
     margin: 10px auto;
     outline: none;
     border: none;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.1),
+                -4px -4px 5px rgba(0,0,0,0.1);
 }
 form .start{
     display: block;

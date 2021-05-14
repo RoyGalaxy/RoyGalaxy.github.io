@@ -9,20 +9,22 @@ const form = document.querySelector('form');
 const total = document.querySelector('#total');
 
 // On form Submit
-form.addEventListener("submit",
-    () => {
-        getList();
-        let n = entries.length;
-        
-        localStorage[`name${n}`] = name.value;
-        localStorage[`rate${n}`] = rate.value;
-        localStorage[`qty${n}`] = qty.value;
-        entries.push(n)
-        clear();
-        
-        localStorage.setItem('list',JSON.stringify(entries));
-    }
-);
+form.addEventListener("submit",function (){
+    getList();
+    let n;
+    
+    n = entries.length;
+    entries.push(n)
+    localStorage.setItem('list',JSON.stringify(entries));
+    
+    
+    localStorage[`name${n}`] = name.value;
+    localStorage[`rate${n}`] = rate.value;
+    localStorage[`qty${n}`] = qty.value;
+    
+    clear();
+
+});
 
 // Reset Form Entries
 const clear = () => {
@@ -41,7 +43,7 @@ listbtn.onclick = () => {
 
 // Make list
 var entries = [];
-function createList(){
+const createList = () => {
     getList();
     list.innerHTML = '';
     var sum = 0;
@@ -49,7 +51,7 @@ function createList(){
         let name = localStorage[`name${entries[i]}`];
         let rate = localStorage[`rate${entries[i]}`];
         let qty = localStorage[`qty${entries[i]}`];
-        const li = `<li>${i+1}. ${name} (${qty}) <span><span id="danger" class="${i}" onclick="del(this)">Delete</span> ${rate * qty}</span></li>`;
+        const li = `<li>${i+1}. ${name} (${qty},${rate}) <span><span class="${i}" onclick="update(this)">Edit</span><span id="danger" class="${i}" onclick="del(this)">Delete</span></li>`;
         
         list.innerHTML += li
         sum += rate * qty;
@@ -67,6 +69,7 @@ function emptyList(){
 
 }
 
+// Delete an Entry 
 function del(el){
     if(!confirm('Do you really want to Delete this')) return;
     const num = parseInt(el.className)
@@ -82,6 +85,7 @@ function del(el){
     
 }
 
+// Getting entries from localStorage
 function getList(){
     var list = localStorage.getItem('list');
     if(list == undefined){
@@ -91,3 +95,17 @@ function getList(){
         entries = JSON.parse(list);
     }
 }
+
+function update(el){
+    clear();
+    name.blur();
+    listbtn.click();
+    const num = parseInt(el.className);
+    name.value = localStorage[`name${num}`];
+    rate.value = localStorage[`rate${num}`];
+    qty.value = localStorage[`qty${num}`];
+    
+    
+    setTimeout(function() {alert('This feature is not available yet')}, (50));
+}
+
