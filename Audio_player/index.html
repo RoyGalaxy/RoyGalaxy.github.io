@@ -10,21 +10,27 @@
     <body>
        <section class="container">
            <header>
-               <span class="home"><i class="fas fa-home"></i></span>
+               <span class="home" onclick="window.open('https://roygalaxy.netlify.app')"><i class="fas fa-home"></i></span>
                <span class="menu"></span>
            </header>
            <div class="body">
                <audio id="music" src="./music/Kabhi Kabhi Aditi Zindagi.mp3"></audio>
                <div class="image">
-                   <img src="./images/dummy.jpg" alt="" />
+                   <img src="./images/Kabhi Kabhi Aditi Zindagi.webp" alt="" />
                </div>
                <div class="controls">
-                   <span class="side" id="prev"><i class="fas fa-backward"></i></span>
-                   <span class="main" id="play-pause"><i class="fas fa-play"></i></span>
-                   <span class="side" id="next"><i class="fas fa-forward"></i></span>
+                   <div class="time-controls">
+                       <input type="range" id="seekTime" min="0" value='0' max="100"/>
+                   </div>
+                   <div class="track-controls">
+                       <span class="side" id="prev"><i class="fas fa-backward"></i></span>
+                       <span class="main" id="play-pause"><i class="fas fa-play"></i></span>
+                       <span class="side" id="next"><i class="fas fa-forward"></i></span>
+                   </div>
                </div>
            </div>
-       </section> 
+       </section>
+       
        <script src="tasker.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>
