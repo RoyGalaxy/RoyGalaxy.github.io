@@ -32,12 +32,17 @@ body{
 }
 header span{
     display: flex;
-    color: #dadada;
+    color: #555;
     font-size: 16px;
+    letter-spacing: 1px;
 }
 header span i{
     font-size: 24px;
     color: #444;
+}
+header span i.playing{
+    color: #555;
+    margin-left: 5px;
 }
 .body{
     height: calc(100vh - 60px); width: 100%;
