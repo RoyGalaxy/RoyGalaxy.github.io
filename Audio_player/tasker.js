@@ -41,20 +41,14 @@ const toggleSwitch = () => {
 }
 const changeMusic = index => {
     music.src = `./music/${musicList[index]}`;
-    changePoster(index)
     currentMusic = index;
+    changePoster(index)
     playBtn.click();
     checkLike()
 }
 const changePoster = (index) => {
     poster.src = `./images/${posterList[index]}`;
-    navigator.mediaSession.metadata = new MediaMetadata({
-    title: `${musicList[index]}`,
-    artwork: [
-        { src: `./images/${posterList[index]}`, sizes: '256x256', type: 'image/png' },
-        { src: `./images/${posterList[index]}`, sizes: '512x512', type: 'image/png' }
-    ]
-  });
+    createMediaSession();
 }
 const seekTo = () => {
     let time = (music.duration / 100) * seekSlider.value;
@@ -84,6 +78,10 @@ const callibrateSeek = () => {
         totalSec = 0;
     }
     (totalSec < 10) ? totalSec = '0' + totalSec : totalSec = totalSec;
+    if(totalMin === NaN && totalSec === NaN){
+        totalMin = 0;
+        totalSec = 0
+    }
     duration.innerText = `${totalMin}:${totalSec}`;
 }
 const goFullScreen = () => {
@@ -135,6 +133,10 @@ music.onended = () => {
 seekSlider.onchange = () => {
     seekTo();
 }
+//  window loaded
+window.onload = () => {
+    initialize()
+}
 
 // special feature Functions
 const downloadMusic = () => {
@@ -168,32 +170,63 @@ const getFavourites = () => {
     console.log(favourites)
 }
 
+const createMediaSession = () => {
+    let index = currentMusic;
+    let image = `./images/${posterList[index]}`;
+    if('mediaSession' in navigator){
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title:`${musicList[index]}`,
+            album:'Roy Galaxy',
+            artwork:[
+               { src:`${image}`, sizes:'512x512', type:'image/png'},
+               { src:`${image}`, sizes:'256x256', type:'image/png'}
+            ]
+        });
+    }
+    console.log(index)
+}
+const createActionHandlers = () => {
+    if('mediaSession' in navigator){
+        const target = navigator.mediaSession
+        //  Play music
+        target.setActionHandler('play',() => {
+            toggleMusic();
+            toggleSwitch();
+        });
+        //  Pause
+        target.setActionHandler('pause',() => {
+            toggleMusic();
+            toggleSwitch();
+        });
+        // nect track
+        target.setActionHandler('nexttrack',() => {
+            let index = currentMusic + 1;
+            (index > (musicList.length - 1)) ? index = 0 : index = index;
+            changeMusic(index)
+            seekSlider.value = 0;
+        });
+        //  Previous track
+        target.setActionHandler('previoustrack',() => {
+            let index = currentMusic - 1;
+            (index < 0) ? index = musicList.length - 1 : index = index;
+            changeMusic(index)
+            seekSlider.value = 0;
+        });
+        //  Seek forward
+        target.setActionHandler('seekforward',() => {
+           music.currentTime += 10 
+        });
+        //  seek Backward
+        target.setActionHandler('seekbackward',() => {
+            music.currentTime -= 10
+        })
+    }
+}
+
 /* this function calls some function to initialise app */
 const initialize = () => {
     getFavourites();
     checkLike();
-}
-initialize();
-if ('mediaSession' in navigator) {
-
-  navigator.mediaSession.metadata = new MediaMetadata({
-    title: 'Never Gonna Give You Up',
-    artist: 'Rick Astley',
-    album: 'Whenever You Need Somebody',
-    artwork: [
-      { src: 'https://dummyimage.com/96x96',   sizes: '96x96',   type: 'image/png' },
-      { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
-      { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
-      { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
-      { src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
-      { src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
-    ]
-  });
-
-  navigator.mediaSession.setActionHandler('play', function() {});
-  navigator.mediaSession.setActionHandler('pause', function() {});
-  navigator.mediaSession.setActionHandler('seekbackward', function() {});
-  navigator.mediaSession.setActionHandler('seekforward', function() {});
-  navigator.mediaSession.setActionHandler('previoustrack', function() {});
-  navigator.mediaSession.setActionHandler('nexttrack', function() {});
+    createMediaSession()
+    createActionHandlers()
 }
