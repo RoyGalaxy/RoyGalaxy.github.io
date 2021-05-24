@@ -1,5 +1,7 @@
 const music = document.querySelector('#music');
 const poster = document.querySelector('.image img');
+const currentTime = document.querySelector('#currentTime');
+const duration = document.querySelector('#duration');
 // components
 const musicList = [
     'Kabhi Kabhi Aditi Zindagi.mp3',
@@ -32,8 +34,6 @@ const seekSlider = document.querySelector('#seekTime');
 const toggleMusic = () => {
     music.paused ? music.play() : music.pause();
     music.paused ? clearInterval(callibrate) : callibrate = setInterval(callibrateSeek,1000);
-    
-
 }
 const toggleSwitch = () => {
     const target = playBtn.children[0];
@@ -44,20 +44,47 @@ const changeMusic = index => {
     changePoster(index)
     currentMusic = index;
     playBtn.click();
+    checkLike()
 }
 const changePoster = (index) => {
     poster.src = `./images/${posterList[index]}`;
+    navigator.mediaSession.metadata = new MediaMetadata({
+    title: `${musicList[index]}`,
+    artwork: [
+        { src: `./images/${posterList[index]}`, sizes: '256x256', type: 'image/png' },
+        { src: `./images/${posterList[index]}`, sizes: '512x512', type: 'image/png' }
+    ]
+  });
 }
 const seekTo = () => {
     let time = (music.duration / 100) * seekSlider.value;
     music.currentTime = time;
     let n = seekSlider.value;
+    callibrateSeek();
     seekSlider.style.background = `linear-gradient(to right,#23C0BB 0%,#23C0Bb ${n}%,#222 ${n}%,#222 100%)`
 }
 const callibrateSeek = () => {
     seekSlider.value = (music.currentTime * 100) / music.duration;
     let n = seekSlider.value;
-    seekSlider.style.background = `linear-gradient(to right,#23C0BB 0%,#23C0Bb ${n}%,#222 ${n}%,#222 100%)`
+    seekSlider.style.background = `linear-gradient(to right,#23C0BB 0%,#23C0Bb ${n}%,#222 ${n}%,#222 100%)`;
+    // currentTime 
+    let min = Math.floor(music.currentTime/60)
+    let sec = Math.round(music.currentTime - (min * 60),0);
+    if(sec == 60){
+        min += 1;
+        sec = 0;
+    }
+    (sec < 10) ? sec = '0' + sec : sec = sec;
+    currentTime.innerText = `${min}:${sec}`
+    // Duration
+    let totalMin = Math.floor(music.duration /60);
+    let totalSec = Math.round(music.duration - (totalMin * 60));
+    if(totalSec == 60){
+        totalMin += 1;
+        totalSec = 0;
+    }
+    (totalSec < 10) ? totalSec = '0' + totalSec : totalSec = totalSec;
+    duration.innerText = `${totalMin}:${totalSec}`;
 }
 const goFullScreen = () => {
     const container = document.querySelector('.container')
@@ -71,7 +98,7 @@ const goFullScreen = () => {
 }
 
 
-/*/// event listener  ///*/
+/* event listener  */
 // playBtn
 playBtn.onclick = () => {
     goFullScreen();
@@ -107,4 +134,97 @@ music.onended = () => {
 // seekSlider
 seekSlider.onchange = () => {
     seekTo();
+}
+
+// special feature Functions
+const downloadMusic = () => {
+    let link = document.createElement('a');
+    link.href = music.src;
+    console.log(link)
+    link.setAttribute('download','');
+    link.click()
+}
+var likeBtn = document.querySelector('.like')
+var favourites = [];
+const toggleLike = () => {
+    likeBtn.classList.toggle('active');
+    (likeBtn.classList.value.includes('active')) ? favourites.push(music.src) : favourites.splice(musicList[music.src],1)
+    saveFavourites();
+}
+const checkLike = () => {
+    if(!(likeBtn.classList.value.includes('active')) && favourites.includes(music.src)){
+        likeBtn.classList.add("active")
+    }
+    else if((likeBtn.classList.value.includes('active')) && !favourites.includes(music.src)){
+        likeBtn.classList.remove('active')
+    }
+}
+const saveFavourites = () => {
+    let list = JSON.stringify(favourites);
+    localStorage.favourites = list;
+}
+const getFavourites = () => {
+    favourites = JSON.parse(localStorage.favourites)
+    console.log(favourites)
+}
+
+/* this function calls some function to initialise app */
+const initialize = () => {
+    getFavourites();
+    checkLike();
+}
+initialize();
+
+
+
+
+if ('mediaSession' in navigator) {
+
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: 'Kabhi Kabhi Aditi Zindagi',
+    artwork: [
+        { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
+        { src: './images/Kabhi Kabhi Aditi Zindagi.webp', sizes: '512x512', type: 'image/png' }
+    ]
+  });
+
+  navigator.mediaSession.setActionHandler('play', function() {
+    goFullScreen();
+    toggleMusic();
+    toggleSwitch();
+  });
+  navigator.mediaSession.setActionHandler('pause', function() {
+    goFullScreen();
+    toggleMusic();
+    toggleSwitch();
+  });
+  navigator.mediaSession.setActionHandler('seekbackward', function() {
+      music.cirrentTime -= 10;
+  });
+  navigator.mediaSession.setActionHandler('seekforward', function() {
+      music.currentTime += 10;
+  });
+  navigator.mediaSession.setActionHandler('previoustrack', function() {
+      if(currentMusic === 0){
+        changeMusic(musicList.length - 1)
+    }else{
+        changeMusic(currentMusic - 1);
+    }
+    seekSlider.value = 0
+  });
+  navigator.mediaSession.setActionHandler('nexttrack', function() {
+    if(currentMusic === musicList.length - 1){
+        changeMusic(0)
+    }else{
+        changeMusic(currentMusic + 1);
+    }
+    seekSlider.value = 0
+  });
+  navigator.mediaSession.setActionHandler('seekto', (details) => {
+      music.currentTime = details.seekTime;
+  });
+  navigator.mediaSession.setActionHandler('stop',() => {
+      music.pause();
+      music.currentTime = 0;
+  });
 }

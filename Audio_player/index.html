@@ -10,27 +10,38 @@
     <body>
        <section class="container">
            <header>
-               <span class="home" onclick="window.open('https://roygalaxy.netlify.app')"><i class="fas fa-home"></i></span>
-               <span class="menu"></span>
+               <span class="back"><i class="fas fa-chevron-left"></i></span>
+               <span class="back"><i class="fas fa-volume-up"></i>Playing now</span>
+               <span class="menu"><i class="fas fa-list-music"></i></span>
            </header>
+           <div class="popup">
+               
+           </div>
            <div class="body">
                <audio id="music" src="./music/Kabhi Kabhi Aditi Zindagi.mp3"></audio>
                <div class="image">
                    <img src="./images/Kabhi Kabhi Aditi Zindagi.webp" alt="" />
                </div>
+               <div class="track-name">
+                       <h2>Kabhi Kabhi Aditi Zindagi</h2>
+                       <h4>Roy Galaxy</h4>
+                   </div>
                <div class="controls">
                    <div class="time-controls">
+                       <span id="currentTime">0:00</span>
                        <input type="range" id="seekTime" min="0" value='0' max="100"/>
+                       <span id="duration">0:00</span>
                    </div>
                    <div class="track-controls">
-                       <span class="side" id="prev"><i class="fas fa-backward"></i></span>
+                       <span class="like corner" onclick="toggleLike(this)"><i class="fas fa-heart"></i></span>
+                       <span class="side" id="prev"><i class="fas fa-step-backward"></i></span>
                        <span class="main" id="play-pause"><i class="fas fa-play"></i></span>
-                       <span class="side" id="next"><i class="fas fa-forward"></i></span>
+                       <span class="side" id="next"><i class="fas fa-step-forward"></i></span>
+                       <span class="download corner" onclick="downloadMusic()" ><i class="fas fa-download"></i></span>
                    </div>
                </div>
            </div>
        </section>
-       
        <script src="tasker.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>

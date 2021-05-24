@@ -1,8 +1,12 @@
+/* importing fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+    font-family: 'Poppins';
+} 
 body{
     height: 100vh;
     width: 1005;
@@ -14,7 +18,7 @@ body{
     z-index: 3;
     height: 100vh;
     width: 100%;
-    background: linear-gradient(to top right,transparent 0% ,transparent 60%,rgba(255,255,255,0.15));
+    background: linear-gradient(to top right,rgba(255,255,255,0.05),transparent 30% ,transparent 60%,rgba(255,255,255,0.15));
     overflow: hidden;
     backdrop-filter: blur(250px);
 }
@@ -28,31 +32,12 @@ body{
 }
 header span{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    height: 45px; width: 45px;
-    background: #000;
-    border: 5px solid #111;
-    border-radius: 50%;
-    box-shadow: 2px -2px 4px rgba(255,255,255,0.052),
-                -2px 2px 4px rgba(0,0,0,0.4);
-    color: #DADADA;
+    color: #dadada;
+    font-size: 16px;
 }
-header .menu::before,header .menu::after{
-    content: '';
-    display: block;
-    position: relative;
-    height: 2px; width: 20px;
-    background: #DADADA;
-}
-header .menu::before{
-    top: -7px;
-    box-shadow:0 8px #DADADA;
-}
-header .menu::after{
-    top: 7px;
+header span i{
+    font-size: 24px;
+    color: #444;
 }
 .body{
     height: calc(100vh - 60px); width: 100%;
@@ -64,17 +49,25 @@ header .menu::after{
     padding: 30px 0 80px 0;
 }
 .body .image{
+    position: relative;
     height: 70vw; width: 70vw;
-    border: 10px solid #111;
-    box-shadow: 2px 2px 4px rgba(255,255,255,0.1),
-                2px 2px 6px rgba(255,255,255,0.1),
-                2px 2px 8px rgba(255,255,255,0.1),
-                2px 2px 10px rgba(255,255,255,0.1);
-    overflow: hidden;
-    border-radius: 40px;
+    border-radius: 20px;
+    box-shadow: 5px -5px 15px rgba(0,0,0,0.2);
+}
+.body .image::before{
+    position: absolute;
+    content: '';
+    display: inline-block;
+    height: 20px;
+    width: 50%;
+    background: rgba(255,255,255,0.2);
+    filter: blur(15px);
+    top: calc(100% - 10px);
+    left: 25%;
 }
 .body .image img{
-    height: calc(70vw - 20px); width: calc(70vw - 20px);
+    height: 100%; width: 100%;
+    border-radius: 20px;
 }
 .body .controls{
     width: 100%;
@@ -100,17 +93,33 @@ header .menu::after{
     color: #DADADA;
     font-size: 20px;
 }
-.time-controls{
-    margin-bottom: 40px;
+.track-controls .corner{
+    font-size: 22px;
+    color: #444;
+}
+.track-controls .like.active{
+    color: #df346d;
+    color: #23C0BB;
 }
 .time-controls input[type = range]{
     -webkit-appearance:none;
     position: relative;
     display: block;
     width: 80%;
-    background:#222;
+    background:#444;
     border-radius: 3px;
-    
+    margin: 0 auto 80px;
+}
+.time-controls span{
+    position: relative;
+    color: #444;
+    top: -10px;
+}
+.time-controls span#currentTime{
+    left: 10%;
+}
+.time-controls span#duration{
+    left: -10%;
 }
 .time-controls input[type=range]::-webkit-slider-runnable-track{
     height: 5px;
@@ -126,4 +135,15 @@ header .menu::after{
     border-radius: 50%;
     background:#222;
     border:4px solid #23C0BB;
+}
+.track-name{
+    width: 80%;
+    margin: 40px auto;
+}
+.track-name h2{
+    color: #DADADA;
+    margin: auto;
+}
+.track-name h4{
+    color: #444;
 }
