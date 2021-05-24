@@ -99,6 +99,8 @@ const goFullScreen = () => {
 /* event listener  */
 // playBtn
 playBtn.onclick = () => {
+    createMediaSession();
+    createActionHandlers();
     goFullScreen();
     toggleMusic();
     toggleSwitch();
@@ -227,6 +229,4 @@ const createActionHandlers = () => {
 const initialize = () => {
     getFavourites();
     checkLike();
-    createMediaSession()
-    createActionHandlers()
 }
