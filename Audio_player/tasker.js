@@ -2,25 +2,9 @@ const music = document.querySelector('#music');
 const poster = document.querySelector('.image img');
 const currentTime = document.querySelector('#currentTime');
 const duration = document.querySelector('#duration');
+const trackDisplay = document.querySelector('.track-name h2');
+
 // components
-const musicList = [
-    'Kabhi Kabhi Aditi Zindagi.mp3',
-    'Baadshaho- Socha Hai Lyrical.mp3',
-    'Nazar-pulkit-arora.mp3',
-    'Loot liya.mp3',
-    'Sanjog.mp3',
-    'khabbi Seat.mp3',
-    'Supne - Akhil.mp3'
-];
-const posterList = [
-    'Kabhi Kabhi Aditi Zindagi.webp',
-    'Baadshaho- Socha Hai Lyrical.jpg',
-    'Nazar-pulkit-arora.jpeg',
-    'Loot liya.jpeg',
-    'Sanjog.jpg',
-    'khabbi Seat.jpg',
-    'Supne - Akhil.jpg'    
-]
 var currentMusic = 0;
 var callibrate;
 
@@ -44,7 +28,8 @@ const changeMusic = index => {
     currentMusic = index;
     changePoster(index)
     playBtn.click();
-    checkLike()
+    checkLike();
+    trackDisplay.innerText = musicList[index];
 }
 const changePoster = (index) => {
     poster.src = `./images/${posterList[index]}`;
@@ -144,7 +129,6 @@ window.onload = () => {
 const downloadMusic = () => {
     let link = document.createElement('a');
     link.href = music.src;
-    console.log(link)
     link.setAttribute('download','');
     link.click()
 }
