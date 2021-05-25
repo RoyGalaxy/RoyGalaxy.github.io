@@ -1,5 +1,6 @@
 const musicList = [
     'Kabhi Kabhi Aditi Zindagi.mp3',
+    'Aasan Nahin Yahan.mp3',
     'Baadshaho- Socha Hai Lyrical.mp3',
     'Nazar-pulkit-arora.mp3',
     'Loot liya.mp3',
@@ -11,6 +12,7 @@ const musicList = [
 ];
 const posterList = [
     'Kabhi Kabhi Aditi Zindagi.webp',
+    'Aasan Nahin Yahan.jpg',
     'Baadshaho- Socha Hai Lyrical.jpg',
     'Nazar-pulkit-arora.jpeg',
     'Loot liya.jpeg',

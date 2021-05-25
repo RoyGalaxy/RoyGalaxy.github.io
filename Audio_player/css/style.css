@@ -145,6 +145,11 @@ header span i.playing{
 .track-name h2{
     color: #DADADA;
     margin: auto;
+    overflow: hidden;
+    max-height: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    
 }
 .track-name h4{
     color: #444;
