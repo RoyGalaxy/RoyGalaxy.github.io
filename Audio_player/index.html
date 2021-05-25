@@ -3,46 +3,72 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="css/musicLibrary.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="css/style.css"/>
         <title>Music Player</title>
     </head>
     <body>
        <section class="container">
-           <header>
-               <span class="back"><i class="fas fa-chevron-left"></i></span>
-               <span class="back">Playing now <i class="fas fa-volume-up playing"></i></span>
-               <span class="menu"><i class="fas fa-bars"></i></span>
-           </header>
-           <div class="popup">
-               
-           </div>
-           <div class="body">
-               <audio id="music" src="./music/Kabhi Kabhi Aditi Zindagi.mp3"></audio>
-               <div class="image">
-                   <img src="./images/Kabhi Kabhi Aditi Zindagi.webp" alt="" />
-               </div>
-               <div class="track-name">
-                       <h2>Kabhi Kabhi Aditi Zindagi</h2>
-                       <h4>Roy Galaxy</h4>
-                   </div>
-               <div class="controls">
-                   <div class="time-controls">
-                       <span id="currentTime">0:00</span>
-                       <input type="range" id="seekTime" min="0" value='0' max="100"/>
-                       <span id="duration">0:00</span>
-                   </div>
-                   <div class="track-controls">
-                       <span class="like corner" onclick="toggleLike(this)"><i class="fas fa-heart"></i></span>
-                       <span class="side" id="prev"><i class="fas fa-step-backward"></i></span>
-                       <span class="main" id="play-pause"><i class="fas fa-play"></i></span>
-                       <span class="side" id="next"><i class="fas fa-step-forward"></i></span>
-                       <span class="download corner" onclick="downloadMusic()" ><i class="fas fa-download"></i></span>
-                   </div>
-               </div>
-           </div>
-       </section>
-       <script src="playList.js" type="text/javascript" charset="utf-8"></script>
-       <script src="tasker.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Player Screen -->
+            <div class="player-screen">
+                <header>
+                    <span class="back"><i class="fas fa-chevron-left"></i></span>
+                    <span class="screen-name">Playing now <i class="fas fa-volume-up playing"></i></span>
+                    <span class="menu"><i class="fas fa-bars"></i></span>
+                </header>
+                <div class="popup">
+                    
+                </div>
+                <div class="body">
+                    <audio id="music" src="./music/Kabhi Kabhi Aditi Zindagi.mp3"></audio>
+                    <div class="image">
+                        <img src="./images/Kabhi Kabhi Aditi Zindagi.webp" alt="" />
+                    </div>
+                    <div class="track-name">
+                            <h2>Kabhi Kabhi Aditi Zindagi</h2>
+                            <h4>Roy Galaxy</h4>
+                        </div>
+                    <div class="controls">
+                        <div class="time-controls">
+                            <span id="currentTime">0:00</span>
+                            <input type="range" id="seekTime" min="0" value='0' max="100"/>
+                            <span id="duration">0:00</span>
+                        </div>
+                        <div class="track-controls">
+                            <span class="like corner" onclick="toggleLike(this)"><i class="fas fa-heart"></i></span>
+                            <span class="side" id="prev"><i class="fas fa-step-backward"></i></span>
+                            <span class="main" id="play-pause"><i class="fas fa-play"></i></span>
+                            <span class="side" id="next"><i class="fas fa-step-forward"></i></span>
+                            <span class="download corner" onclick="downloadMusic()" ><i class="fas fa-download"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Music Library Screen -->
+            <div class="library-screen">
+                <header>
+                    <span class="player-btn"><i class="fas fa-headphones-alt"></i></span>
+                    <span class="screen-name">Library <i class="fas fa-music playing"></i></span>
+                    <span class="menu"><i class="fas fa-bars"></i></span>
+                </header>
+                <footer class="playing-now">
+                    <img class="current-song" src="./images/Kabhi Kabhi Aditi Zindagi.webp" />
+                    <div class="title">
+                        <h4>Kabhi Kabhi Aditi Zindagi Mai Yuhi.mp3</h4>
+                        <span>Roy Galaxy</span>
+                    </div>
+                    <div class="control">
+                        <span class="popup-play" onclick="playBtn.click()"><i class="fas fa-play"></i></span>
+                    </div>
+                </footer>
+            </div>
+        </section>
+        <script src="js/playList.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/eventListeners.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/mediaSession.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/tasker.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>
