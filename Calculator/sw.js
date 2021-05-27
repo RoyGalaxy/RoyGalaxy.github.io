@@ -1,10 +1,10 @@
 const staticCacheName = 'static-web';
 const assets = [
-    './',
-    './index.html',
-    './css/style.css',
-    './js/app.js',
-    './js/tasker.js',
+    '/',
+    '/index.html',
+    '/css/style.css',
+    '/js/app.js',
+    '/js/tasker.js',
     'https://use.fontawesome.com/releases/v5.15.3/css/all.css'
     ]
 
