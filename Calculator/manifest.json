@@ -2,7 +2,7 @@
     "name": "Calculator",
     "short_name": "Calcultor",
     "display": "standalone",
-    "start_url": "/index.html",
+    "start_url": "index.html",
     "theme_color": "#fff",
     "background_color": "#222",
     "orientation": "portrait-primary",
